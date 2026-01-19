@@ -15,6 +15,8 @@ body{font-family:Inter,sans-serif;overflow-x:hidden;color:var(--b123-navy)}
 .service-card{background:#fff;border:3px solid #E8F4F8;border-radius:24px;padding:2.5rem;transition:all .4s cubic-bezier(.4,0,.2,1);cursor:pointer}
 .service-card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(0,166,232,.15);border-color:#A8D8EA}
 .service-card.active{border-color:var(--b123-blue);background:#F8FCFF}
+.towing-subservices{display:none;margin-top:2rem;padding-top:2rem;border-top:2px solid #E8F4F8;gap:1rem}
+.towing-subservices.active{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));animation:slideDown .4s ease-out}
 .roadside-subservices{display:none;margin-top:2rem;padding-top:2rem;border-top:2px solid #E8F4F8;gap:1rem}
 .roadside-subservices.active{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));animation:slideDown .4s ease-out}
 @keyframes slideDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
@@ -26,7 +28,9 @@ body{font-family:Inter,sans-serif;overflow-x:hidden;color:var(--b123-navy)}
 .section-title{font-family:'Bebas Neue',cursive;font-size:3rem;color:var(--b123-navy);letter-spacing:3px}
 .sticky-header{position:sticky;top:0;z-index:100;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.08)}
 .fleet-hero{position:relative;height:24rem;overflow:hidden;background:url('fleet-truck.jpg') center/cover fixed;background-color:#999}
-.fleet-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.7),rgba(0,0,0,.5),rgba(0,0,0,.7))}
+.fleet-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.6),rgba(0,0,0,.4),rgba(0,0,0,.6))}
+.social-btn{display:inline-flex;align-items:center;gap:0.75rem;padding:0.75rem 1.5rem;border-radius:0.5rem;font-weight:600;transition:all .3s;text-decoration:none}
+.social-btn:hover{transform:translateY(-2px)}
 </style>
 </head>
 <body class="bg-gray-50">
@@ -60,7 +64,7 @@ body{font-family:Inter,sans-serif;overflow-x:hidden;color:var(--b123-navy)}
 <h2 class="section-title text-center mb-16">How Can We Help You Today?</h2>
 <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
 
-<div class="service-card" onclick="window.open('http://public.towbook.com/VaVL','_blank')">
+<div class="service-card" id="towingCard" onclick="toggleTowingOptions()">
 <h3 class="text-3xl font-bold mb-6 text-center">Towing Service</h3>
 <svg class="w-32 h-32 mx-auto mb-6" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
 <rect x="10" y="100" width="160" height="45" fill="#fff" stroke="#1a1a1a" stroke-width="3" rx="5"/>
@@ -77,7 +81,57 @@ body{font-family:Inter,sans-serif;overflow-x:hidden;color:var(--b123-navy)}
 <circle cx="35" cy="100" r="5" fill="#1a1a1a" stroke="#666" stroke-width="2"/>
 <circle cx="100" cy="100" r="5" fill="#1a1a1a" stroke="#666" stroke-width="2"/>
 </svg>
-<p class="text-gray-600 text-center text-lg">Emergency towing, flatbed transport, heavy-duty hauling</p>
+<p class="text-gray-600 text-center text-lg leading-relaxed">• Flatbed Towing & Transport<br>• Light-Duty Flatbed Service<br>• Medium-Duty Flatbed & Wrecker Service<br>• Heavy-Duty Flatbed & Wrecker Service<br>• Vehicle Transport & Multi-Vehicle Transport</p>
+<div class="towing-subservices" id="towingSubservices">
+<a href="http://public.towbook.com/VaVL" target="_blank" class="subservice-option">
+<svg class="w-12 h-12 mx-auto mb-3" viewBox="0 0 24 24" fill="none" stroke="#00A6E8" stroke-width="2">
+<rect x="2" y="10" width="20" height="8" rx="1"/>
+<path d="M6 10V6h12v4"/>
+<circle cx="7" cy="18" r="2"/>
+<circle cx="17" cy="18" r="2"/>
+</svg>
+<div class="text-sm font-semibold">Flatbed Towing & Transport</div>
+</a>
+<a href="http://public.towbook.com/VaVL" target="_blank" class="subservice-option">
+<svg class="w-12 h-12 mx-auto mb-3" viewBox="0 0 24 24" fill="none" stroke="#00A6E8" stroke-width="2">
+<rect x="3" y="11" width="18" height="6" rx="1"/>
+<path d="M7 11V8h10v3"/>
+<circle cx="8" cy="17" r="1.5"/>
+<circle cx="16" cy="17" r="1.5"/>
+</svg>
+<div class="text-sm font-semibold">Light-Duty Flatbed Service</div>
+</a>
+<a href="http://public.towbook.com/VaVL" target="_blank" class="subservice-option">
+<svg class="w-12 h-12 mx-auto mb-3" viewBox="0 0 24 24" fill="none" stroke="#00A6E8" stroke-width="2.5">
+<rect x="2" y="10" width="20" height="8" rx="1"/>
+<path d="M6 10V6h12v4"/>
+<circle cx="7" cy="18" r="2"/>
+<circle cx="17" cy="18" r="2"/>
+<rect x="14" y="4" width="6" height="4" rx="0.5"/>
+</svg>
+<div class="text-sm font-semibold">Medium-Duty Flatbed & Wrecker Service</div>
+</a>
+<a href="http://public.towbook.com/VaVL" target="_blank" class="subservice-option">
+<svg class="w-12 h-12 mx-auto mb-3" viewBox="0 0 24 24" fill="none" stroke="#00A6E8" stroke-width="2.5">
+<rect x="1" y="9" width="22" height="9" rx="1"/>
+<path d="M5 9V5h14v4"/>
+<circle cx="6" cy="18" r="2.5"/>
+<circle cx="18" cy="18" r="2.5"/>
+<rect x="15" y="3" width="7" height="4" rx="0.5"/>
+</svg>
+<div class="text-sm font-semibold">Heavy-Duty Flatbed & Wrecker Service</div>
+</a>
+<a href="http://public.towbook.com/VaVL" target="_blank" class="subservice-option">
+<svg class="w-12 h-12 mx-auto mb-3" viewBox="0 0 24 24" fill="none" stroke="#00A6E8" stroke-width="2">
+<rect x="2" y="8" width="8" height="6" rx="1"/>
+<rect x="14" y="8" width="8" height="6" rx="1"/>
+<circle cx="6" cy="14" r="1.5"/>
+<circle cx="18" cy="14" r="1.5"/>
+<path d="M10 11h4M12 9v4"/>
+</svg>
+<div class="text-sm font-semibold">Vehicle Transport & Multi-Vehicle Transport</div>
+</a>
+</div>
 </div>
 
 <div class="service-card" id="roadsideCard" onclick="toggleRoadsideOptions()">
@@ -117,15 +171,7 @@ body{font-family:Inter,sans-serif;overflow-x:hidden;color:var(--b123-navy)}
 <div class="text-sm font-semibold">Jump-Start</div>
 </a>
 <a href="http://public.towbook.com/VaVL" target="_blank" class="subservice-option">
-<div class="relative inline-block mb-3">
-<svg class="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="#00A6E8" stroke-width="2">
-<circle cx="7" cy="7" r="4"/><path d="M10 10l10 10M12 8l8 8"/>
-</svg>
-<svg class="absolute w-16 h-16" style="left:-8px;top:-8px" viewBox="0 0 64 64">
-<line x1="8" y1="8" x2="56" y2="56" stroke="#E74C3C" stroke-width="4" stroke-linecap="round"/>
-<line x1="56" y1="8" x2="8" y2="56" stroke="#E74C3C" stroke-width="4" stroke-linecap="round"/>
-</svg>
-</div>
+<div class="text-2xl font-bold mb-3" style="color:#00A6E8;line-height:1">KEYS<br>LOCKED<br>IN?</div>
 <div class="text-sm font-semibold">Lockout</div>
 </a>
 <a href="http://public.towbook.com/VaVL" target="_blank" class="subservice-option">
@@ -135,6 +181,33 @@ body{font-family:Inter,sans-serif;overflow-x:hidden;color:var(--b123-navy)}
 <rect x="5" y="5" width="8" height="6"/>
 </svg>
 <div class="text-sm font-semibold">Fuel Delivery</div>
+</a>
+<a href="http://public.towbook.com/VaVL" target="_blank" class="subservice-option">
+<div class="relative inline-block mb-3">
+<svg class="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="#E74C3C" stroke-width="2">
+<rect x="2" y="7" width="20" height="11" rx="2"/>
+<path d="M7 7V4M17 7V4"/>
+<line x1="6" y1="10" x2="18" y2="16" stroke-width="3"/>
+<line x1="18" y1="10" x2="6" y2="16" stroke-width="3"/>
+</svg>
+<svg class="absolute w-16 h-16" style="left:-2px;top:-2px" viewBox="0 0 24 24" fill="none" stroke="#27AE60" stroke-width="2.5">
+<rect x="2" y="7" width="20" height="11" rx="2" stroke="none" fill="white" opacity="0.9"/>
+<rect x="2" y="7" width="20" height="11" rx="2"/>
+<path d="M7 7V4M17 7V4"/>
+<path d="M7 12l3 3l7-7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</div>
+<div class="text-sm font-semibold">Battery Replacement</div>
+</a>
+<a href="http://public.towbook.com/VaVL" target="_blank" class="subservice-option">
+<svg class="w-12 h-12 mx-auto mb-3" viewBox="0 0 24 24" fill="none" stroke="#00A6E8" stroke-width="2">
+<path d="M3 8h7a1 1 0 011 1v6a1 1 0 01-1 1H3a1 1 0 01-1-1V9a1 1 0 011-1z"/>
+<path d="M14 8h7a1 1 0 011 1v6a1 1 0 01-1 1h-7"/>
+<circle cx="7" cy="12" r="2"/>
+<path d="M17 10l-3 4h2l-3 4"/>
+</svg>
+<div class="text-sm font-semibold">Mobile Mechanic / Roadside Mechanic</div>
+<div class="text-xs text-gray-500 mt-1">Available Upon Request</div>
 </a>
 </div>
 </div>
@@ -196,15 +269,16 @@ body{font-family:Inter,sans-serif;overflow-x:hidden;color:var(--b123-navy)}
 <div class="grid md:grid-cols-3 gap-12 mb-12">
 <div>
 <div class="logo-text text-4xl mb-4" style="color:var(--b123-blue)">BUFFALO <span style="font-size:.5em;vertical-align:super">123</span> TOWING</div>
-<p class="text-gray-400 mb-4 leading-relaxed">Professionally owner-operated towing and roadside assistance serving Buffalo and Western New York since <span id="foundingYear">2024</span>.</p>
+<p class="text-gray-400 mb-4 leading-relaxed">Professionally owner-operated towing and roadside assistance serving Buffalo and Western New York since 2023.</p>
 <p class="text-gray-400 mb-2"><strong class="text-white">US DOT:</strong> 4046748</p>
 <p class="text-gray-400"><strong class="text-white">Location:</strong> Buffalo, NY</p>
 </div>
 <div>
 <h4 class="text-xl font-bold mb-6 text-white">24/7 Emergency Contact</h4>
 <a href="tel:7168009263" class="text-4xl font-bold block mb-6 hover:text-blue-400 transition" style="color:var(--b123-blue)">(716) 800-9263</a>
-<p class="text-gray-400 mb-4">Available 24 hours a day, 7 days a week for emergency towing and roadside assistance throughout Western New York.</p>
-<a href="https://www.google.com/search?q=Buffalo+123+Towing" target="_blank" rel="noopener" class="inline-flex items-center gap-3 bg-white text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+<p class="text-gray-400 mb-6">Available 24 hours a day, 7 days a week for emergency towing and roadside assistance throughout Western New York.</p>
+<div class="flex flex-col gap-3">
+<a href="https://www.google.com/search?q=Buffalo+123+Towing" target="_blank" rel="noopener" class="social-btn bg-white text-gray-900 hover:bg-gray-100">
 <svg class="w-6 h-6" viewBox="0 0 24 24">
 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
 <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
@@ -213,6 +287,19 @@ body{font-family:Inter,sans-serif;overflow-x:hidden;color:var(--b123-navy)}
 </svg>
 Review Us on Google
 </a>
+<a href="https://www.facebook.com/YOUR_FB_PROFILE_ID" target="_blank" rel="noopener" class="social-btn bg-blue-600 text-white hover:bg-blue-700">
+<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+<path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+</svg>
+Visit Us on Facebook
+</a>
+<a href="https://www.yelp.com/biz/YOUR_YELP_PROFILE_ID" target="_blank" rel="noopener" class="social-btn bg-red-600 text-white hover:bg-red-700">
+<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+<path d="M21.111 18.226c-.141.969-2.119 3.483-3.029 3.847-.311.124-.611.094-.85-.09-.154-.12-.314-.365-2.447-3.827l-.633-1.032c-.244-.37-.199-.857.104-1.229.297-.362.732-.506 1.104-.407l1.158.263c3.706.895 3.937 1.027 4.091 1.181.178.174.269.42.226.737 0 0 .011.073-.016.16-.026.087.141-.969 0 0zm-3.012-12.784c.272-.313.567-.58 1.235-.316.671.267 2.419 2.435 2.834 3.185.096.176.163.358.161.538-.003.348-.143.506-.524.711l-1.05.565c-3.604 1.775-3.779 1.812-4.095 1.689-.317-.123-.594-.44-.682-.806l-.262-1.105c-.879-3.606-.903-3.813-.824-4.091.08-.279.314-.549.683-.656 0 0 .062-.027.134-.038.072-.011-.969.141 0 0 .969-.141 1.576.034 2.39.324zm-9.063 9.784c.141.969 2.119 3.483 3.029 3.847.311.124.611.094.85-.09.154-.12.314-.365 2.447-3.827l.633-1.032c.244-.37.199-.857-.104-1.229-.297-.362-.732-.506-1.104-.407l-1.158.263c-3.706.895-3.937 1.027-4.091 1.181-.178.174-.269.42-.226.737 0 0-.011.073.016.16.026.087-.141-.969 0 0zm-3.221-3.214c-.312.271-.582.567-.316 1.234.267.671 2.435 2.419 3.185 2.834.176.096.358.163.538.161.348-.003.506-.143.711-.524l.565-1.05c1.775-3.604 1.812-3.779 1.689-4.095-.123-.317-.44-.594-.806-.682l-1.105-.262c-3.606-.879-3.813-.903-4.091-.824-.279.08-.549.314-.656.683 0 0-.027.062-.038.134-.011.072.141-.969 0 0-.141.969.034 1.576.324 2.391zM11.11 6.022c.963-.158 3.618-2.003 3.958-2.938.118-.318.067-.619-.147-.851-.139-.148-.396-.3-3.945-2.298l-1.067-.595c-.392-.225-.893-.164-1.252.162-.351.318-.477.757-.36 1.126l.308 1.149c1.061 3.663 1.203 3.885 1.372 4.028.191.164.443.247.7.22 0 0 .074-.007.163-.029.088-.022-.963.183 0 0 .963-.183 1.576.034 2.39.324z"/>
+</svg>
+Review Us on Yelp
+</a>
+</div>
 </div>
 <div>
 <h4 class="text-xl font-bold mb-6 text-white">Service Areas</h4>
@@ -233,7 +320,7 @@ Review Us on Google
 </div>
 </div>
 <div class="border-t border-gray-700 pt-8 text-center">
-<p class="text-gray-400 text-sm">&copy; <span id="currentYear">2024</span> Buffalo 123 Towing. All rights reserved. Licensed, Insured & DOT Certified.</p>
+<p class="text-gray-400 text-sm">&copy; 2023 - <span id="currentYear">2024</span> Buffalo 123 Towing. All rights reserved. Licensed, Insured & DOT Certified.</p>
 </div>
 </div>
 </footer>
@@ -241,8 +328,14 @@ Review Us on Google
 <script>
 const y=new Date().getFullYear();
 document.getElementById('currentYear').textContent=y;
-document.getElementById('foundingYear').textContent=y;
+let t=false;
 let r=false;
+function toggleTowingOptions(){
+t=!t;
+const c=document.getElementById('towingCard');
+const s=document.getElementById('towingSubservices');
+t?(c.classList.add('active'),s.classList.add('active')):(c.classList.remove('active'),s.classList.remove('active'))
+}
 function toggleRoadsideOptions(){
 r=!r;
 const c=document.getElementById('roadsideCard');
