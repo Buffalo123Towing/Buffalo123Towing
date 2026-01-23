@@ -27,8 +27,15 @@ body{font-family:Inter,sans-serif;overflow-x:hidden;color:var(--b123-navy)}
 .hero-gradient{background:linear-gradient(135deg,#1a1a1a 0%,#2C3E50 50%,#1a1a1a 100%)}
 .section-title{font-family:'Bebas Neue',cursive;font-size:3rem;color:var(--b123-navy);letter-spacing:3px}
 .sticky-header{position:sticky;top:0;z-index:100;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.08)}
-.fleet-hero{position:relative;height:24rem;overflow:hidden;background:url('fleet-truck.jpg') center/cover fixed;background-color:#999}
+.fleet-hero{position:relative;height:24rem;overflow:hidden;background:url('fleet-truck.jpg') center/cover;background-color:#999}
 .fleet-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.6),rgba(0,0,0,.4),rgba(0,0,0,.6))}
+@media (min-width:768px){
+.fleet-hero{background-attachment:fixed}
+}
+@media (max-width:767px){
+.fleet-hero{height:28rem;background-size:cover;background-position:center center}
+.fleet-hero::before{background:linear-gradient(to bottom,rgba(0,0,0,.7),rgba(0,0,0,.5),rgba(0,0,0,.75))}
+}
 .social-btn{display:inline-flex;align-items:center;gap:0.75rem;padding:0.75rem 1.5rem;border-radius:0.5rem;font-weight:600;transition:all .3s;text-decoration:none}
 .social-btn:hover{transform:translateY(-2px)}
 </style>
@@ -70,7 +77,7 @@ body{font-family:Inter,sans-serif;overflow-x:hidden;color:var(--b123-navy)}
 <rect x="10" y="100" width="160" height="45" fill="#fff" stroke="#1a1a1a" stroke-width="3" rx="5"/>
 <rect x="140" y="55" width="45" height="65" fill="#fff" stroke="#1a1a1a" stroke-width="3" rx="3"/>
 <rect x="145" y="60" width="35" height="25" fill="#E5E7EB" stroke="#1a1a1a" stroke-width="2.5" rx="2"/>
-<text x="162" y="110" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#00A6E8" text-anchor="middle">123</text>
+<text x="162" y="98" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#00A6E8" text-anchor="middle">123</text>
 <rect x="143" y="105" width="39" height="10" fill="#00A6E8" rx="2"/>
 <circle cx="40" cy="155" r="16" fill="#1a1a1a" stroke="#00A6E8" stroke-width="3"/>
 <circle cx="150" cy="155" r="16" fill="#1a1a1a" stroke="#00A6E8" stroke-width="3"/>
